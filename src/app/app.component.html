@@ -1,3 +1,14 @@
-<h1>
-  {{title}}
-</h1>
+<div>
+  <h1>File Generator</h1>
+  <span>Use the checkboxes to form value to use</span>
+  <div *ngFor="let check of checks">
+    <input type="checkbox" *ngFor="let box of check">
+  </div>
+  <div>
+    <span>Enter actual value from checkboxes</span><input #number type="text">
+  </div>
+  <div>
+    <button (click)="generateFile(number)">Generate</button>
+  </div>
+  <span>{{message}}</span>
+</div>
