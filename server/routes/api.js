@@ -5,12 +5,14 @@ const fs = require('fs');
 router.post('/genfile', (req, res) => {
     var data = req.body;
     var str = 'input: ';
-    data.values.forEach(value => {
-        if(value === true) {
-            str += 1;
-        } else {
-            str += 0;
-        }
+    data.values.forEach(values => {
+        values.forEach(value => {
+            if(value.selected === true) {
+                str += 1;
+            } else {
+                str += 0;
+            }
+        });
     });
     str += ` expected: ${data.number}`;
     fs.writeFile('ouput.txt', str, (err) => {
@@ -19,7 +21,7 @@ router.post('/genfile', (req, res) => {
             res.send({message: `Unable to generate file error: ${err}`});
         } else {
             res.status(200);
-            res.send({message: `File: /output.txt generated in ${__dirname}`});
+            res.send({message: `File: /output.txt generated in ${global.path}`});
         }
     });
 });

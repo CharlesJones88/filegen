@@ -9,7 +9,7 @@ import { FileGenService } from './filegen.service';
   providers: [ FileGenService ]
 })
 export class AppComponent {
-  public checks: boolean[][] = [];
+  public checks: {selected: boolean}[][] = [];
   public message: string = '';
   constructor(private fileGenService: FileGenService) {
     const width = 5;
@@ -17,15 +17,15 @@ export class AppComponent {
     for(var i = 0; i < height; ++i) {
       this.checks[i] = [];
       for(var j = 0; j < width; ++j) {
-        this.checks[i][j] = false;
+        this.checks[i][j] = {selected: false};
       }
     }
   }
   generateFile(number) {
-    var params = {number: number, values: this.checks};
+    debugger;
+    var params = {number: parseInt(number.value), values: this.checks};
     this.fileGenService.generateFile(params).subscribe(value => {
       this.message = value;
-      debugger;
     });
   }
 }

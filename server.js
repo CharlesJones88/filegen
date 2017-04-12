@@ -7,6 +7,7 @@ const opn = require('opn');
 const api = require('./server/routes/api');
 
 const app = express();
+global.path = __dirname;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
