@@ -15,7 +15,7 @@ router.post('/genfile', (req, res) => {
         });
     });
     str += ` expected: ${data.number}`;
-    fs.writeFile('ouput.txt', str, (err) => {
+    fs.writeFile('output.txt', str, (err) => {
         if(err) {
             res.status(405);
             res.send({message: `Unable to generate file error: ${err}`});
