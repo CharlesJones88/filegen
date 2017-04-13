@@ -18,7 +18,7 @@ router.post('/genfile', (req, res) => {
     fs.writeFile('output.txt', str, (err) => {
         if(err) {
             res.status(405);
-            res.send({message: `Unable to generate file error: ${err}`});
+            res.send({message: `Unable to generate file. Error: ${err}`});
         } else {
             res.status(200);
             res.send({message: `File: /output.txt generated in ${global.path}`});
